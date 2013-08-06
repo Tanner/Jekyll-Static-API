@@ -32,15 +32,17 @@ module Jekyll
   end
 
   class Post
+    def index
+      self.site.posts.index(self)
+    end
+
     def api
       next_self = self.next.id unless self.next == nil
       previous_self = self.previous.id unless self.previous == nil
 
-      index = self.site.posts.index(self)
-
       entry = {
         "id" => self.id,
-        "index" => index,
+        "index" => self.index,
         "title" => self.title,
         "url" => site.config['url'] + self.url,
         "date" => self.date,
