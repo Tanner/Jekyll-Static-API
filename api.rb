@@ -37,9 +37,6 @@ module Jekyll
     end
 
     def api
-      next_self = self.next.id unless self.next == nil
-      previous_self = self.previous.id unless self.previous == nil
-
       entry = {
         "id" => self.id,
         "index" => self.index,
@@ -48,8 +45,6 @@ module Jekyll
         "date" => self.date,
         "tags" => self.tags,
         "categories" => self.categories,
-        "next" => next_self,
-        "previous" => previous_self,
         "excerpt" => self.extracted_excerpt,
         "content" => self.content
       }
