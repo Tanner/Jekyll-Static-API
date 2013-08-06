@@ -3,6 +3,13 @@ Static API
 
 A static API plugin for Jekyll.
 
+Installation
+============
+1. `gem install json`
+2. Download `api.rb`
+3. Place `api.rb` in Jekyll's `_plugins` directory.
+4. Rebuild your site (e.g. `jekyll build`).
+
 Schema
 ======
 All API access is over HTTP, and accessed from the `yourdomain.com/api/v1`. All data is sent as JSON.
@@ -136,3 +143,7 @@ GET /pages/:index.json
   "html?": true
 }
 ```
+
+Author
+======
+Tanner Smith
