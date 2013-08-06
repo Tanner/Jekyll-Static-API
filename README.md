@@ -13,20 +13,53 @@ Posts
 This provides a dump of all posts, in the order that they were created.
 
 ```
-GET /posts
+GET /posts.json
 ```
 
 #### Response
 ```
+[
+  {
+    "url": "http://www.tannersmith.me/2010/08/26/blog-host/",
+    "title": "Blog Host",
+    "excerpt": "Think I may use one of my servers for hosting this blog. Wordpress.com does not give me enough options. And I like to have options and the ability to customize whatever I want.\n\n\n",
+    "index": 0,
+    "content": "Think I may use one of my servers for hosting this blog. Wordpress.com does not give me enough options. And I like to have options and the ability to customize whatever I want.\n",
+    "id": "/2010/08/26/blog-host",
+    "categories": [
+      "general"
+    ],
+    "date": "Thu Aug 26 14:09:00 -0400 2010",
+    "tags": [
+
+    ]
+  },
+  ...
+]
 ```
 
 ### Get
 ```
-GET /post/:id
+GET /posts/:id.json
 ```
 
 #### Response
 ```
+{
+  "url": "http://www.tannersmith.me/2010/08/26/blog-host/",
+  "title": "Blog Host",
+  "excerpt": "Think I may use one of my servers for hosting this blog. Wordpress.com does not give me enough options. And I like to have options and the ability to customize whatever I want.\n\n\n",
+  "index": 0,
+  "content": "Think I may use one of my servers for hosting this blog. Wordpress.com does not give me enough options. And I like to have options and the ability to customize whatever I want.\n",
+  "id": "/2010/08/26/blog-host",
+  "categories": [
+    "general"
+  ],
+  "date": "Thu Aug 26 14:09:00 -0400 2010",
+  "tags": [
+
+  ]
+}
 ```
 
 Pages
@@ -35,18 +68,43 @@ Pages
 This provides a dump of all pages, in the order that they were created.
 
 ```
-GET /pages
+GET /pages.json
 ```
 
 #### Response
 ```
+[
+  {
+    "url": "http://www.tannersmith.me/404.html",
+    "index?": false,
+    "index": 0,
+    "content": "<p>Oh noez! The page you were looking for could not be found!</p>\n\n<p>Maybe try the <a href=\"/archive.html\">archive</a>?</p>",
+    "data": {
+      "title": "Page not found",
+      "layout": "static"
+    },
+    "html?": true
+  },
+  ...
+]
 ```
 
 ### Get
 ```
-GET /pages/:id
+GET /pages/:id.json
 ```
 
 #### Response
 ```
+{
+  "url": "http://www.tannersmith.me/404.html",
+  "index?": false,
+  "index": 0,
+  "content": "<p>Oh noez! The page you were looking for could not be found!</p>\n\n<p>Maybe try the <a href=\"/archive.html\">archive</a>?</p>",
+  "data": {
+    "title": "Page not found",
+    "layout": "static"
+  },
+  "html?": true
+}
 ```
