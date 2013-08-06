@@ -3,6 +3,8 @@ require "json"
 module Jekyll
   API_DIRECTORY = "api"
 
+  POSTS_DIRECTORY = File.join(API_DIRECTORY, "posts")
+
   class ApiStaticFile < StaticFile
     def initialize(site, base, dir, name, content)
       super(site, base, dir, name)
@@ -29,11 +31,41 @@ module Jekyll
     end
   end
 
+  class Post
+    def api
+      next_self = self.next.id unless self.next == nil
+      previous_self = self.previous.id unless self.previous == nil
+
+      index = self.site.posts.index(self)
+
+      entry = {
+        "id" => self.id,
+        "index" => index,
+        "title" => self.title,
+        "url" => site.config['url'] + self.url,
+        "date" => self.date,
+        "tags" => self.tags,
+        "categories" => self.categories,
+        "next" => next_self,
+        "previous" => previous_self,
+        "excerpt" => self.extracted_excerpt,
+        "content" => self.content
+      }
+    end
+  end
+
   class ApiGenerator < Generator
     safe true
 
     def generate(site)
-      site.static_files << ApiStaticFile.new(site, File.expand_path(site.config['destination']), API_DIRECTORY, 'index.html', 'cats')
+      # Create /posts.json
+      posts = []
+
+      site.posts.each{ |post|
+        posts.push(post.api)
+      }
+
+      site.static_files << ApiStaticFile.new(site, site.config['destination'], API_DIRECTORY, 'posts.json', JSON.pretty_generate(posts))
     end
   end
 end
