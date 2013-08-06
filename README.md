@@ -1,4 +1,4 @@
-Static API
+Jekyll Static API
 ==========
 
 A static API plugin for Jekyll.
