@@ -40,7 +40,7 @@ GET /posts.json
 
 ### Get
 ```
-GET /posts/:id.json
+GET /posts/:index.json
 ```
 
 #### Response
@@ -91,7 +91,7 @@ GET /pages.json
 
 ### Get
 ```
-GET /pages/:id.json
+GET /pages/:index.json
 ```
 
 #### Response
