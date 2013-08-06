@@ -68,6 +68,13 @@ module Jekyll
       }
 
       site.static_files << ApiStaticFile.new(site, site.config['destination'], API_DIRECTORY, 'posts.json', JSON.pretty_generate(posts))
+
+      # Create /posts/:id.json
+      site.posts.each{ |post|
+        index = post.index
+
+        site.static_files << ApiStaticFile.new(site, site.config['destination'], POSTS_DIRECTORY, index.to_s + '.json', JSON.pretty_generate(post.api))
+      }
     end
   end
 end
