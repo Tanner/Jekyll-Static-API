@@ -17,7 +17,7 @@ module Jekyll
 
       unless File.exists?(directory)
         p = Pathname.new(directory)
-        p.mkdir
+        p.mkpath
       end
 
       File.open(destination, 'w') do |f|
