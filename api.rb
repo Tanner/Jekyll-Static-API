@@ -73,6 +73,10 @@ module Jekyll
     safe true
 
     def generate(site)
+      ##
+      ## Post API's
+      ##
+
       # Create /posts.json
       posts = []
 
@@ -88,6 +92,10 @@ module Jekyll
 
         site.static_files << ApiStaticFile.new(site, site.config['destination'], POSTS_DIRECTORY, index.to_s + '.json', JSON.pretty_generate(post.api))
       }
+
+      ##
+      ## Page API's
+      ##
 
       # Create /pages.json
       pages = []
