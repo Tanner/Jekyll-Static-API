@@ -39,6 +39,8 @@ GET /posts.json
 ```
 
 ### Count
+Returns the number of posts.
+
 ```
 GET /posts/count.json
 ```
@@ -102,6 +104,8 @@ GET /pages.json
 ```
 
 ### Count
+Returns the number of pages.
+
 ```
 GET /posts/count.json
 ```
