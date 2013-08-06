@@ -4,6 +4,7 @@ module Jekyll
   API_DIRECTORY = "api"
 
   POSTS_DIRECTORY = File.join(API_DIRECTORY, "posts")
+  PAGES_DIRECTORY = File.join(API_DIRECTORY, "pages")
 
   class ApiStaticFile < StaticFile
     def initialize(site, base, dir, name, content)
@@ -28,6 +29,23 @@ module Jekyll
       end
 
       true
+    end
+  end
+
+  class Page
+    def index
+      self.site.pages.index(self)
+    end
+
+    def api
+      entry = {
+        "index" => self.index,
+        "url" => site.config['url'] + self.url,
+        "data" => self.data,
+        "html?" => self.html?,
+        "index?" => self.index?,
+        "content" => self.content
+      }
     end
   end
 
@@ -69,6 +87,22 @@ module Jekyll
         index = post.index
 
         site.static_files << ApiStaticFile.new(site, site.config['destination'], POSTS_DIRECTORY, index.to_s + '.json', JSON.pretty_generate(post.api))
+      }
+
+      # Create /pages.json
+      pages = []
+
+      site.pages.each{ |page|
+        pages.push(page.api)
+      }
+
+      site.static_files << ApiStaticFile.new(site, site.config['destination'], API_DIRECTORY, 'pages.json', JSON.pretty_generate(pages))
+
+      # Create /pages/:id.json
+      site.pages.each{ |page|
+        index = page.index
+
+        site.static_files << ApiStaticFile.new(site, site.config['destination'], PAGES_DIRECTORY, index.to_s + '.json', JSON.pretty_generate(page.api))
       }
     end
   end
