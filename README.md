@@ -12,7 +12,7 @@ Installation
 
 Schema
 ======
-All API access is over HTTP, and accessed from the `yourdomain.com/api/v1`. All data is sent as JSON.
+All API access is over HTTP, and accessed from the `yourdomain.com/api/`. All data is sent as JSON.
 
 Posts
 -----
