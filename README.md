@@ -38,6 +38,18 @@ GET /posts.json
 ]
 ```
 
+### Count
+```
+GET /posts/count.json
+```
+
+#### Response
+```
+[
+  83
+]
+```
+
 ### Get
 ```
 GET /posts/:index.json
@@ -86,6 +98,18 @@ GET /pages.json
     "html?": true
   },
   ...
+]
+```
+
+### Count
+```
+GET /posts/count.json
+```
+
+#### Response
+```
+[
+  6
 ]
 ```
 

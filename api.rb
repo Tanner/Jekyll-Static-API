@@ -86,6 +86,9 @@ module Jekyll
 
       site.static_files << ApiStaticFile.new(site, site.config['destination'], API_DIRECTORY, 'posts.json', JSON.pretty_generate(posts))
 
+      # Create /posts/count.json
+      site.static_files << ApiStaticFile.new(site, site.config['destination'], POSTS_DIRECTORY, 'count.json', JSON.pretty_generate([site.posts.length]))
+
       # Create /posts/:id.json
       site.posts.each{ |post|
         index = post.index
@@ -105,6 +108,9 @@ module Jekyll
       }
 
       site.static_files << ApiStaticFile.new(site, site.config['destination'], API_DIRECTORY, 'pages.json', JSON.pretty_generate(pages))
+
+      # Create /pages/count.json
+      site.static_files << ApiStaticFile.new(site, site.config['destination'], PAGES_DIRECTORY, 'count.json', JSON.pretty_generate([site.pages.length]))
 
       # Create /pages/:id.json
       site.pages.each{ |page|
