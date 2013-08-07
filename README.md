@@ -1,7 +1,7 @@
 Jekyll Static API
 ==========
 
-A static API plugin for Jekyll.
+A static API plugin for [Jekyll](http://jekyllrb.com/).
 
 Installation
 ============
